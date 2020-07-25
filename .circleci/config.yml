@@ -25,6 +25,7 @@ jobs:
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
+      - run: sudo apt-get install mysql-server
 
       # Download and cache dependencies
       - restore_cache:
@@ -54,7 +55,6 @@ jobs:
       # - run: touch storage/testing.sqlite
       # - run: php artisan migrate --env=testing --database=mysql --force
 
-      - run: sudo apt-get install mysql-client
 
       - run: mysqladmin create test --user="root" --password="root"
       - run: php artisan migrate --env=testing --force
