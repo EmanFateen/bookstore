@@ -9,11 +9,7 @@ jobs:
       # Specify the version you desire here
       - image: circleci/php:7.2-node-browsers
       - image: circleci/mysql:8.0.4
-        environment:
-          MYSQL_ROOT_PASSWORD: rootpw
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: user
-          MYSQL_PASSWORD: passw0rd
+  
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -58,10 +54,10 @@ jobs:
       # - run: touch storage/testing.sqlite
       # - run: php artisan migrate --env=testing --database=mysql --force
 
-      - run:
-        name: Install MySQL CLI; Import dummy data; run an example query
-        command: |
-          sudo apt-get install default-mysql-client
+      - run: sudo apt-get install mysql-client
+
+      - run: mysqladmin create test --user="root" --password="root"
+      - run: php artisan migrate --env=testing --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
