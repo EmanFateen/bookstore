@@ -49,7 +49,6 @@ class PublishersController extends Controller
     {
         $Publishers = Publisher::all()->sortBy('name');
         $Publisher = Publisher::find($id);
-        //dd($Author);
         return view('publishers.show_one')->with(['Publishers'=>$Publishers,'publisher'=>$Publisher]);
     }
 

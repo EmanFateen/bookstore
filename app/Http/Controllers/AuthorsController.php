@@ -51,7 +51,6 @@ class AuthorsController extends Controller
        
         $Authors = Author::all()->sortBy('name');
         $Author = Author::find($id);
-        //dd($Author);
         return view('authors.show_one')->with(['authors'=>$Authors,'author'=>$Author]);
     }
 

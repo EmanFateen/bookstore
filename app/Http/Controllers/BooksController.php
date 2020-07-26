@@ -16,15 +16,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-
-       // return view('welcome');
-
-       //if(Auth::user())
-      //    dd(Auth::user()->id);
-
         $books = Book::all();
-       
-        //dd($book->authors[0]->name);
         return view('books.all')->with('books',$books);
     }
 
@@ -58,8 +50,6 @@ class BooksController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-       
-        //dd($book->authors[0]->name);
         return view('books.show_one')->with('book',$book);
     }
 
