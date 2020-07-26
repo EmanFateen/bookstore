@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::redirect('/','bookstore/book');
 
 Route::group(['prefix' => 'bookstore'], function() {
 
